@@ -413,12 +413,7 @@ class Corsica(SimpleHTTPRequestHandlerStream):
                 path_override = True
                 _vprint(f'Applying rule[{rule}]: {oldpath} => {path}')
                 break
-        #ur = path.replace('/', '', 1) if path.startswith ('/') else path
-        #_vprint (f'Does {ur} exist?')
-        #if not os.path.exists (ur):
-        #    _vprint (f'Prepend server path.')
-        #    ur = os.path.join (self.server_path, ur)
-        #
+
         relative_path = path.replace('/', '', 1) if path.startswith ('/') else path
         _vprint(f'How?')
         _vprint(f'self.server_path: {self.server_path}')
@@ -445,6 +440,7 @@ class Corsica(SimpleHTTPRequestHandlerStream):
 
         # Who's this?
         self.send_header('Server', f'Corsica {get_version ()}')
+
         # Where do we come from anyways?
         self.send_header('Access-Control-Allow-Origin', self.allowed_origin)
         # Your method of choice.
